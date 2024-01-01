@@ -4,8 +4,6 @@ import { SpendingsComponent } from './spendings/spendings.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/spendings', pathMatch: 'full' },
-
   { path: 'categories', component: CategoriesComponent },
   { path: 'spendings', component: SpendingsComponent },
-  //{ path: '**', component: PageNotFoundComponent },
 ];

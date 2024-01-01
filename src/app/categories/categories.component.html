@@ -1,1 +1,5 @@
 <h2>Budget Categories</h2>
+
+<mat-list role="list" *ngFor="let unit of categoriesList">
+  <mat-list-item role="listitem"> {{ unit.name }}</mat-list-item>
+</mat-list>

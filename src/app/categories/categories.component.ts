@@ -10,10 +10,9 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, MatListModule],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss',
-
 })
 export class CategoriesComponent implements OnInit {
-  categoriesList: Category[] = [];
+  categoriesList: { [key: number]: Category } = {};
 
   constructor(private categoriesServive: CategoriesService) {}
   ngOnInit(): void {

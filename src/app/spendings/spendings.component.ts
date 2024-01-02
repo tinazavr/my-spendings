@@ -17,7 +17,7 @@ import { Category } from '../interfaces/category';
 })
 export class SpendingsComponent implements OnInit {
   spendingsList: Spendings[] = [];
-  categoriesList: Category[] = [];
+  categoriesList: { [key: number]: Category } = {};
 
   displayedColumns: string[] = ['date', 'title', 'categoryName'];
   dataSource = this.spendingsList;
@@ -36,11 +36,7 @@ export class SpendingsComponent implements OnInit {
     }
   }
   findCategoryName(id: number): any {
-    for (let k = 0; k <= this.categoriesList.length; k++) {
-     if (id === this.categoriesList[k].id) {
-        return this.categoriesList[k].name;
-      }
-    }
+    console.log(id);
+    return this.categoriesList[id].name;
   }
-
 }

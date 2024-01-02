@@ -36,7 +36,6 @@ export class SpendingsComponent implements OnInit {
     }
   }
   findCategoryName(id: number): any {
-    console.log(id);
     return this.categoriesList[id].name;
   }
 }

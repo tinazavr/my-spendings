@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Category } from './category';
+import { Category } from '../interfaces/category';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class CategoriesService {
   private categories: Category[] = [
     { id: 0, name: 'Flat' },

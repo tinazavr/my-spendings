@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../categories.service';
+import { CategoriesService } from '../services/categories.service';
 import { Category } from '../interfaces/category';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, MatListModule],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss',
+
 })
 export class CategoriesComponent implements OnInit {
   categoriesList: Category[] = [];

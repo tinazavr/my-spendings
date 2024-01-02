@@ -25,14 +25,26 @@ export class SpendingsService {
       title: 'Payed for 10 les.',
     },
     {
-      id:3 ,
+      id: 3,
       categoryId: 7,
       date: '4th May',
       title: 'Weekend near lake',
     },
+    {
+      id: 4,
+      categoryId: 6,
+      date: '9th May',
+      title: 'Netflix',
+    },
+    {
+      id: 5,
+      categoryId: 2,
+      date: '8th May',
+      title: 'Paid for Judo lessons',
+    },
   ];
-  getSpendings(): Spendings[]{
+  getSpendings(): Spendings[] {
     return this.spendings;
-  };
+  }
   constructor() {}
 }

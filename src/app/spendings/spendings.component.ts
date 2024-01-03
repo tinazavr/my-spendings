@@ -13,7 +13,6 @@ import { Category } from '../interfaces/category';
   imports: [CommonModule, MatListModule, MatTableModule],
   templateUrl: './spendings.component.html',
   styleUrl: './spendings.component.scss',
-  providers: [CategoriesService],
 })
 export class SpendingsComponent implements OnInit {
   spendingsList: Spendings[] = [];

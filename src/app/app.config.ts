@@ -6,5 +6,5 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { CategoriesService } from './services/categories.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimations(), CategoriesService],
+  providers: [provideRouter(routes), provideAnimations()],
 };

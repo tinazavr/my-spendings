@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../categories.service';
-import { Category } from '../category';
+import { CategoriesService } from '../services/categories.service';
+import { Category } from '../interfaces/category';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 

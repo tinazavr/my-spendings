@@ -17,7 +17,8 @@ import { Category } from '../interfaces/category';
 })
 export class SpendingsComponent implements OnInit {
   spendingsList: Spendings[] = [];
-  categoriesList: { [key: number]: Category } = {};
+  categoriesList: Category[] = [];
+  categoriesObj: { [key: number]: Category } = {};
 
   displayedColumns: string[] = ['date', 'title', 'categoryName'];
   dataSource = this.spendingsList;
@@ -28,14 +29,20 @@ export class SpendingsComponent implements OnInit {
   ngOnInit(): void {
     this.spendingsList = this.spendingsService.getSpendings();
     this.categoriesList = this.categories.getCategories();
+    this.createCategoriesObject(this.categoriesList);
 
-    for (let i = 0; i <= this.spendingsList.length; i++) {
+    for (let i = 0; i < this.spendingsList.length; i++) {
       this.spendingsList[i].categoryName = this.findCategoryName(
         this.spendingsList[i].categoryId
       );
     }
   }
-  findCategoryName(id: number): any {
-    return this.categoriesList[id].name;
+  createCategoriesObject(list: Category[]): void {
+    for (let i = 0; i < list.length; i++) {
+      this.categoriesObj[list[i].id] = list[i];
+    }
+  }
+  findCategoryName(id: number): string {
+    return this.categoriesObj[id].name;
   }
 }

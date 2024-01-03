@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './categories.component.scss',
 })
 export class CategoriesComponent implements OnInit {
-  categoriesList: { [key: number]: Category } = {};
+  categoriesList: Category[] = [];
 
   constructor(private categoriesServive: CategoriesService) {}
   ngOnInit(): void {

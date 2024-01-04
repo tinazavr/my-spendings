@@ -28,12 +28,16 @@ export class SpendingsComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.spendingsList = this.spendingsService.getSpendings();
     await this.loadCategories();
     this.createCategoriesObject();
     this.setCategoryNames();
+    await this.loadSpendings();
   }
-
+  async loadSpendings(): Promise<void> {
+    this.spendingsList = await firstValueFrom(
+      this.spendingsService.getSpendings()
+    );
+  }
   async loadCategories(): Promise<void> {
     this.categoriesList = await firstValueFrom(this.categories.getCategories());
   }

@@ -7,6 +7,7 @@ import { Category } from '../interfaces/category';
 })
 export class CategoriesService {
   httpClient: HttpClient = inject(HttpClient);
+  
   getCategories() {
     let link = `http://localhost:3020/api/categories`;
     return this.httpClient.get<Category[]>(link);

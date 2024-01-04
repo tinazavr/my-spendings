@@ -6,6 +6,7 @@ import { SpendingsService } from '../services/spendings.service';
 import { MatTableModule } from '@angular/material/table';
 import { CategoriesService } from '../services/categories.service';
 import { Category } from '../interfaces/category';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-spendings',
@@ -25,20 +26,25 @@ export class SpendingsComponent implements OnInit {
     private spendingsService: SpendingsService,
     private categories: CategoriesService
   ) {}
-  ngOnInit(): void {
-    this.spendingsList = this.spendingsService.getSpendings();
-    this.categoriesList = this.categories.getCategories();
-    this.createCategoriesObject(this.categoriesList);
 
-    for (let i = 0; i < this.spendingsList.length; i++) {
-      this.spendingsList[i].categoryName = this.findCategoryName(
-        this.spendingsList[i].categoryId
-      );
+  async ngOnInit(): Promise<void> {
+    this.spendingsList = this.spendingsService.getSpendings();
+    await this.loadCategories();
+    this.createCategoriesObject();
+    this.setCategoryNames();
+  }
+
+  async loadCategories(): Promise<void> {
+    this.categoriesList = await firstValueFrom(this.categories.getCategories());
+  }
+  createCategoriesObject(): void {
+    for (const element of this.categoriesList) {
+      this.categoriesObj[element.id] = element;
     }
   }
-  createCategoriesObject(list: Category[]): void {
-    for (let i = 0; i < list.length; i++) {
-      this.categoriesObj[list[i].id] = list[i];
+  setCategoryNames() {
+    for (const element of this.spendingsList) {
+      element.categoryName = this.findCategoryName(element.categoryId);
     }
   }
   findCategoryName(id: number): string {

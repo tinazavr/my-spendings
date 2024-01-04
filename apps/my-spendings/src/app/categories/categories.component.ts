@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CategoriesService } from '../services/categories.service';
 import { Category } from '../interfaces/category';
 import { MatListModule } from '@angular/material/list';
@@ -14,8 +14,16 @@ import { CommonModule } from '@angular/common';
 export class CategoriesComponent implements OnInit {
   categoriesList: Category[] = [];
 
-  constructor(private categoriesServive: CategoriesService) {}
-  ngOnInit(): void {
-    this.categoriesList = this.categoriesServive.getCategories();
+  loadCategories(): void {
+    this.categoriesService.getCategories().subscribe((data) => {
+      this.categoriesList = data;
+    });
+
   }
+
+  ngOnInit(): void {
+    this.loadCategories();
+    //this.categoriesList = this.categoriesService.getCategories();
+  }
+  constructor(private categoriesService: CategoriesService) {}
 }

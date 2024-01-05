@@ -19,6 +19,7 @@ export class SpendingsComponent implements OnInit {
   spendingsList: Spendings[] = [];
   categoriesList: Category[] = [];
   categoriesObj: { [key: number]: Category } = {};
+  
 
   displayedColumns: string[] = ['date', 'title', 'categoryName'];
   dataSource = this.spendingsList;

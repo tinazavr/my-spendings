@@ -15,37 +15,37 @@ export const spendingsList = [
   {
     id: 0,
     categoryId: 3,
-    date: '30th April',
+    date: new Date(),
     title: 'Went to the supermarket',
   },
   {
     id: 1,
     categoryId: 8,
-    date: '1th May',
+    date: new Date(),
     title: 'Visited doctor',
   },
   {
     id: 2,
     categoryId: 5,
-    date: '1th May',
+    date: new Date(),
     title: 'Payed for 10 les.',
   },
   {
     id: 3,
     categoryId: 7,
-    date: '4th May',
+    date: new Date(),
     title: 'Weekend near lake',
   },
   {
     id: 4,
     categoryId: 6,
-    date: '9th May',
+    date: new Date(),
     title: 'Netflix',
   },
   {
     id: 5,
     categoryId: 2,
-    date: '8th May',
+    date: new Date(),
     title: 'Paid for Judo lessons',
   },
 ];

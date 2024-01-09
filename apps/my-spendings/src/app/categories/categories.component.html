@@ -3,3 +3,40 @@
 <mat-list role="list" *ngFor="let element of categoriesList">
   <mat-list-item role="listitem"> {{ element.name }}</mat-list-item>
 </mat-list>
+
+<button
+  *ngIf="addCategoryClicked === false"
+  mat-raised-button
+  color="primary"
+  (click)="clickedAddCategory()"
+  class="add-category-button"
+>
+  Add category
+</button>
+
+<form *ngIf="addCategoryClicked === true" #newCategoryForm="ngForm">
+  <mat-form-field class="new-category-field">
+    <mat-label>Type new category:</mat-label>
+
+    <!-- <input type="text" class="form-control" id="name"
+           required
+           [(ngModel)]="model.name" name="name">
+    TODO: remove this: {{ model.name}} -->
+
+    <input
+      [(ngModel)]="newCategoryName"
+      name="newName"
+      required
+      matInput
+      placeholder="Type new category:"
+    />{{ newCategoryName }}
+  </mat-form-field>
+  <br />
+
+  <button mat-raised-button color="primary" (click)="submitNewCategory()" class="submit-category-button">
+    Submit
+  </button>
+  <button mat-raised-button color="primary" class="cancel-category-button">
+    Cancel
+  </button>
+</form>

@@ -43,12 +43,17 @@ export class CategoriesComponent implements OnInit {
     this.addCategoryClicked = true;
   }
   submitNewCategory(): void {
-    this.categoriesService.addCategory(this.newCategoryName).subscribe({
-      next: () => {
-        this.loadCategories();
-      },
-    });
-    this.addCategoryClicked = false;
+    let name = this.newCategoryName.trim();
+    if (name.length > 0) {
+      this.categoriesService.addCategory(name).subscribe({
+        next: () => {
+          this.loadCategories();
+        },
+      });
+      this.addCategoryClicked = false;
+    } else {
+      alert('Category name must contain symbols. Try again.');
+    }
     this.newCategoryName = '';
   }
 

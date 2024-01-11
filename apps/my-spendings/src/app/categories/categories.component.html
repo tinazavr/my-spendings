@@ -29,14 +29,14 @@
       required
       matInput
       placeholder="Type new category:"
-    />{{ newCategoryName }}
+    />
   </mat-form-field>
   <br />
 
   <button mat-raised-button color="primary" (click)="submitNewCategory()" class="submit-category-button">
     Submit
   </button>
-  <button mat-raised-button color="primary" class="cancel-category-button">
+  <button mat-raised-button color="primary" (click)="cancelButton()" class="cancel-category-button">
     Cancel
   </button>
 </form>

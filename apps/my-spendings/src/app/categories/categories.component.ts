@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-categories',
@@ -23,7 +24,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './categories.component.scss',
 })
 export class CategoriesComponent implements OnInit {
-
   addCategoryClicked: boolean = false;
   categoriesList: Category[] = [];
   newCategoryName: string = '';
@@ -39,28 +39,17 @@ export class CategoriesComponent implements OnInit {
   }
   clickedAddCategory() {
     this.addCategoryClicked = true;
-    //console.log('add button works!');
   }
-  submitNewCategory(): void {
-    this.categoriesService.addCategory(this.newCategoryName);
-    console.log('from submitNewCategory method' + this.newCategoryName);
-
+  async submitNewCategory(): Promise<void> {
+    await firstValueFrom(
+      this.categoriesService.addCategory(this.newCategoryName)
+    );
+    this.categoriesList;
+    this.addCategoryClicked = false;
   }
 
-  // changeCategoryName(){
-  //   console.log(this.newCategoryName);
-  // }
-  // getInputValue(event: Event): void {
-  //   console.log(
-  //     'getInputValue method' + (event.target as HTMLInputElement).value
-  //   );
-    //return (event.target as HTMLInputElement).value;
- // }
-  // submitValue(newTitle: string) {
-  //   this.submit.emit(newTitle);
-  // }
-  // getInputValue(event: Event) {
-  //   return (event.target as HTMLInputElement).value;
-  // }
+  cancelButton() {
+    this.addCategoryClicked = false;
+  }
   constructor(private categoriesService: CategoriesService) {}
 }

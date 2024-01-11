@@ -16,6 +16,7 @@ export class CategoriesService {
     const link = `http://localhost:3020/api/categories`;
     const body = { categoryName: newCategory };
     return this.httpClient.post(link, body);
+   
   }
   constructor() {}
   

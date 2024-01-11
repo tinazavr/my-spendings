@@ -1,8 +1,18 @@
 <h2>Budget Categories</h2>
-
-<mat-list role="list" *ngFor="let element of categoriesList">
-  <mat-list-item role="listitem"> {{ element.name }}</mat-list-item>
-</mat-list>
+<div class="example-button-row">
+  <div class="example-flex-container">
+    <mat-list role="list" *ngFor="let element of categoriesList">
+      <!-- <button
+        mat-icon-button
+        color="accent"
+        aria-label="Example icon button with a menu icon"
+      >
+        <mat-icon>menu</mat-icon></button
+      > -->
+      <mat-list-item role="listitem">{{ element.name }}</mat-list-item>
+    </mat-list>
+  </div>
+</div>
 
 <button
   *ngIf="addCategoryClicked === false"
@@ -33,10 +43,20 @@
   </mat-form-field>
   <br />
 
-  <button mat-raised-button color="primary" (click)="submitNewCategory()" class="submit-category-button">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="submitNewCategory()"
+    class="submit-category-button"
+  >
     Submit
   </button>
-  <button mat-raised-button color="primary" (click)="cancelButton()" class="cancel-category-button">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="cancelButton()"
+    class="cancel-category-button"
+  >
     Cancel
   </button>
 </form>

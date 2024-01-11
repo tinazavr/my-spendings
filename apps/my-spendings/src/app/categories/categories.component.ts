@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-categories',
@@ -19,6 +20,7 @@ import { firstValueFrom } from 'rxjs';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatIconModule,
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss',
@@ -40,12 +42,14 @@ export class CategoriesComponent implements OnInit {
   clickedAddCategory() {
     this.addCategoryClicked = true;
   }
-  async submitNewCategory(): Promise<void> {
-    await firstValueFrom(
-      this.categoriesService.addCategory(this.newCategoryName)
-    );
-    this.categoriesList;
+  submitNewCategory(): void {
+    this.categoriesService.addCategory(this.newCategoryName).subscribe({
+      next: () => {
+        this.loadCategories();
+      },
+    });
     this.addCategoryClicked = false;
+    this.newCategoryName = '';
   }
 
   cancelButton() {

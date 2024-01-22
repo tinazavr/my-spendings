@@ -44,14 +44,14 @@ export class CategoriesComponent implements OnInit {
   }
   submitNewCategory(): void {
     let name = this.newCategoryName.trim();
-    if (name.length > 0) {
-      this.categoriesService.addCategory(name).subscribe({
-        next: () => {
-          this.loadCategories();
-        },
-      });
-      this.addCategoryClicked = false;
-    }
+
+    this.categoriesService.addCategory(name).subscribe({
+      next: () => {
+        this.loadCategories();
+      },
+    });
+
+    this.addCategoryClicked = false;
     this.newCategoryName = '';
   }
 

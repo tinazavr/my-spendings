@@ -51,8 +51,6 @@ export class CategoriesComponent implements OnInit {
         },
       });
       this.addCategoryClicked = false;
-    } else {
-      alert('Category name must contain symbols. Try again.');
     }
     this.newCategoryName = '';
   }

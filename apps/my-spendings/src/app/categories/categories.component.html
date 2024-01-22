@@ -2,13 +2,7 @@
 <div class="example-button-row">
   <div class="example-flex-container">
     <mat-list role="list" *ngFor="let element of categoriesList">
-      <!-- <button
-        mat-icon-button
-        color="accent"
-        aria-label="Example icon button with a menu icon"
-      >
-        <mat-icon>menu</mat-icon></button
-      > -->
+
       <mat-list-item role="listitem">{{ element.name }}</mat-list-item>
     </mat-list>
   </div>
@@ -24,26 +18,37 @@
   Add category
 </button>
 
-<form *ngIf="addCategoryClicked === true" #newCategoryForm="ngForm">
+<form *ngIf="addCategoryClicked === true">
   <mat-form-field class="new-category-field">
     <mat-label>Type new category:</mat-label>
-
-    <!-- <input type="text" class="form-control" id="name"
-           required
-           [(ngModel)]="model.name" name="name">
-    TODO: remove this: {{ model.name}} -->
-
     <input
       [(ngModel)]="newCategoryName"
+      type="text"
+      class="form-control"
       name="newName"
       required
+      minlength="3"
       matInput
       placeholder="Type new category:"
+      #categoryName="ngModel"
     />
   </mat-form-field>
+
+  <div
+    *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)"
+    class="alert"
+  >
+    <div *ngIf="categoryName.errors?.['required']">
+      Category name is required.
+    </div>
+    <div *ngIf="categoryName.errors?.['minlength']">
+      Category name must be at least 3 characters long.
+    </div>
+  </div>
   <br />
 
   <button
+    [disabled]="categoryName.invalid"
     mat-raised-button
     color="primary"
     (click)="submitNewCategory()"

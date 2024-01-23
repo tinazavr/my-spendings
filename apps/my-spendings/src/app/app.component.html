@@ -1,28 +1,28 @@
 <mat-sidenav-container>
   <mat-sidenav opened mode="side" [fixedInViewport]="true">
     <mat-nav-list>
-      <mat-list-item
+      <div class="router-button-container"
         routerLink="/categories"
         routerLinkActive
         #routerLinkCategories="routerLinkActive"
       >
-        <a
+        <a class="router-button"
           mat-raised-button
           [color]="routerLinkCategories.isActive ? 'accent' : 'primary'"
           >Categories</a
         >
-      </mat-list-item>
-      <mat-list-item
+    </div>
+      <div class="router-button-container"
         routerLink="/spendings"
         routerLinkActive
         #routerLinkSpendings="routerLinkActive"
       >
-        <a
+        <a 
           mat-raised-button
           [color]="routerLinkSpendings.isActive ? 'accent' : 'primary'"
           >Spendings</a
         >
-      </mat-list-item>
+  </div>
     </mat-nav-list>
   </mat-sidenav>
 

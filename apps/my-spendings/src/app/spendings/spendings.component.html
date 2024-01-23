@@ -37,10 +37,10 @@
   <form *ngIf="addSpendingClicked === true" class="new-spending-form">
     <mat-form-field class="datepicker-field">
       <!-- date -->
-      <mat-label>{{newDate | date : 'MMMM d, y '}}</mat-label>
-      <input matInput [matDatepicker]="picker" />
+      <mat-label>{{ newDate | date : 'M/d/y ' }}</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="newDate" name="choosenDate" />
       <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker" >
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
         <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
       </mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -48,7 +48,7 @@
 
     <!-- text -->
     <mat-form-field class="title-field">
-      <mat-label>Type new title: </mat-label>
+      <mat-label>Type title: </mat-label>
       <input
         [(ngModel)]="newTitle"
         type="text"
@@ -76,6 +76,7 @@
         </mat-error>
       </ng-container>
     </mat-form-field>
+    
     <br />
     <!-- button -->
     <button

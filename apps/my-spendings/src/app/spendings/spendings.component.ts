@@ -87,6 +87,7 @@ export class SpendingsComponent implements OnInit {
     let title = this.newTitle.trim();
     let iSpend: Partial<Spendings> = {
       categoryId: this.newCategoryNum,
+      categoryName: "SOME NAME",
       date: this.newDate,
       title: title,
     };
@@ -99,7 +100,7 @@ export class SpendingsComponent implements OnInit {
     //this.addSpendingClicked = false;
     this.newTitle = '';
     this.newDate = new Date().toUTCString();
-    this.newCategoryNum = 0;
+    //this.newCategoryNum = 0;
 
     //alert(this.newDate + "  " + this.newTitle + '  ' + this.categoriesObj[this.newCategoryNum].name);
   }

@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-spendings',
@@ -30,6 +31,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     FormsModule,
     MatNativeDateModule,
+    MatSelectModule,
   ],
   templateUrl: './spendings.component.html',
   styleUrl: './spendings.component.scss',
@@ -41,7 +43,8 @@ export class SpendingsComponent implements OnInit {
   addSpendingClicked: boolean = false;
   newTitle: string = '';
   newDate: string = new Date().toUTCString();
-  newCategoryNum: number = 8;
+  newCategoryName: string = 'some category';
+  newCategoryNum: number = 6;
 
   displayedColumns: string[] = ['date', 'title', 'categoryName'];
   dataSource = this.spendingsList;
@@ -77,6 +80,8 @@ export class SpendingsComponent implements OnInit {
   findCategoryName(id: number): string {
     return this.categoriesObj[id].name;
   }
+
+
   clickedAddSpending() {
     this.addSpendingClicked = true;
   }
@@ -87,21 +92,20 @@ export class SpendingsComponent implements OnInit {
     let title = this.newTitle.trim();
     let iSpend: Partial<Spendings> = {
       categoryId: this.newCategoryNum,
-      categoryName: "SOME NAME",
+      categoryName: this.newCategoryName,
       date: this.newDate,
       title: title,
     };
+
     this.spendingsService.addSpending(iSpend).subscribe({
       next: () => {
         this.loadSpendings();
       },
     });
+        console.log(Object.values(this.categoriesObj));
 
-    //this.addSpendingClicked = false;
+    this.addSpendingClicked = false;
     this.newTitle = '';
     this.newDate = new Date().toUTCString();
-    //this.newCategoryNum = 0;
-
-    //alert(this.newDate + "  " + this.newTitle + '  ' + this.categoriesObj[this.newCategoryNum].name);
   }
 }

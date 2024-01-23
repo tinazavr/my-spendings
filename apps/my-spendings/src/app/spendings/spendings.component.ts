@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-spendings',
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatDatepickerModule,
     FormsModule,
+    MatNativeDateModule,
   ],
   templateUrl: './spendings.component.html',
   styleUrl: './spendings.component.scss',
@@ -38,7 +40,7 @@ export class SpendingsComponent implements OnInit {
   categoriesObj: { [key: number]: Category } = {};
   addSpendingClicked: boolean = false;
   newTitle: string = '';
-  newDate: string = 'Oct 22, 2024';
+  newDate: string = new Date().toUTCString();
   newCategoryNum: number = 8;
 
   displayedColumns: string[] = ['date', 'title', 'categoryName'];
@@ -82,7 +84,23 @@ export class SpendingsComponent implements OnInit {
     this.addSpendingClicked = false;
   }
   submitNewSpending() {
+    let title = this.newTitle.trim();
+    let iSpend: Partial<Spendings> = {
+      categoryId: this.newCategoryNum,
+      date: this.newDate,
+      title: title,
+    };
+    this.spendingsService.addSpending(iSpend).subscribe({
+      next: () => {
+        this.loadSpendings();
+      },
+    });
+
+    //this.addSpendingClicked = false;
+    this.newTitle = '';
+    this.newDate = new Date().toUTCString();
+    this.newCategoryNum = 0;
+
     //alert(this.newDate + "  " + this.newTitle + '  ' + this.categoriesObj[this.newCategoryNum].name);
   }
 }
-

@@ -1,28 +1,50 @@
 <mat-sidenav-container>
   <mat-sidenav opened mode="side" [fixedInViewport]="true">
     <mat-nav-list>
-      <div class="router-button-container"
-        routerLink="/categories"
-        routerLinkActive
-        #routerLinkCategories="routerLinkActive"
-      >
-        <a class="router-button"
-          mat-raised-button
-          [color]="routerLinkCategories.isActive ? 'accent' : 'primary'"
-          >Categories</a
+      <div class="router-button-container">
+        <mat-nav-item
+          
+          routerLink="/categories"
+          routerLinkActive
+          #routerLinkCategories="routerLinkActive"
         >
-    </div>
-      <div class="router-button-container"
-        routerLink="/spendings"
-        routerLinkActive
-        #routerLinkSpendings="routerLinkActive"
-      >
-        <a 
-          mat-raised-button
-          [color]="routerLinkSpendings.isActive ? 'accent' : 'primary'"
-          >Spendings</a
+          <a
+            class="router-button"
+            mat-raised-button
+            [color]="routerLinkCategories.isActive ? 'accent' : 'primary'"
+            >Categories</a
+          >
+        </mat-nav-item>
+      </div>
+      <div class="router-button-container">
+        <mat-nav-item
+          
+          routerLink="/spendings"
+          routerLinkActive
+          #routerLinkSpendings="routerLinkActive"
         >
-  </div>
+          <a
+            mat-raised-button
+            [color]="routerLinkSpendings.isActive ? 'accent' : 'primary'"
+            >Spendings</a
+          >
+        </mat-nav-item>
+      </div>
+
+      <div class="router-button-container">
+        <mat-nav-item
+          routerLink="/login"
+          routerLinkActive
+          #routerLinkLogin="routerLinkActive"
+        >
+          <a
+            class="router-button"
+            mat-raised-button
+            [color]="routerLinkLogin.isActive ? 'accent' : 'primary'"
+            >Sign in</a
+          >
+        </mat-nav-item>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
 

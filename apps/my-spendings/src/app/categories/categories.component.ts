@@ -14,8 +14,14 @@ import { CommonModule } from '@angular/common';
 export class CategoriesComponent implements OnInit {
   categoriesList: Category[] = [];
 
-  constructor(private categoriesServive: CategoriesService) {}
-  ngOnInit(): void {
-    this.categoriesList = this.categoriesServive.getCategories();
+  loadCategories(): void {
+    this.categoriesService.getCategories().subscribe((data) => {
+      this.categoriesList = data;
+    });
   }
+
+  ngOnInit(): void {
+    this.loadCategories();
+  }
+  constructor(private categoriesService: CategoriesService) {}
 }

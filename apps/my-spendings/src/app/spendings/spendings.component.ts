@@ -6,6 +6,7 @@ import { SpendingsService } from '../services/spendings.service';
 import { MatTableModule } from '@angular/material/table';
 import { CategoriesService } from '../services/categories.service';
 import { Category } from '../interfaces/category';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-spendings',
@@ -18,6 +19,7 @@ export class SpendingsComponent implements OnInit {
   spendingsList: Spendings[] = [];
   categoriesList: Category[] = [];
   categoriesObj: { [key: number]: Category } = {};
+  
 
   displayedColumns: string[] = ['date', 'title', 'categoryName'];
   dataSource = this.spendingsList;
@@ -25,20 +27,29 @@ export class SpendingsComponent implements OnInit {
     private spendingsService: SpendingsService,
     private categories: CategoriesService
   ) {}
-  ngOnInit(): void {
-    this.spendingsList = this.spendingsService.getSpendings();
-    this.categoriesList = this.categories.getCategories();
-    this.createCategoriesObject(this.categoriesList);
 
-    for (let i = 0; i < this.spendingsList.length; i++) {
-      this.spendingsList[i].categoryName = this.findCategoryName(
-        this.spendingsList[i].categoryId
-      );
+  async ngOnInit(): Promise<void> {
+    await this.loadCategories();
+    this.createCategoriesObject();
+    await this.loadSpendings();
+    this.setCategoryNames();
+  }
+  async loadSpendings(): Promise<void> {
+    this.spendingsList = await firstValueFrom(
+      this.spendingsService.getSpendings()
+    );
+  }
+  async loadCategories(): Promise<void> {
+    this.categoriesList = await firstValueFrom(this.categories.getCategories());
+  }
+  createCategoriesObject(): void {
+    for (const element of this.categoriesList) {
+      this.categoriesObj[element.id] = element;
     }
   }
-  createCategoriesObject(list: Category[]): void {
-    for (let i = 0; i < list.length; i++) {
-      this.categoriesObj[list[i].id] = list[i];
+  setCategoryNames() {
+    for (const element of this.spendingsList) {
+      element.categoryName = this.findCategoryName(element.categoryId);
     }
   }
   findCategoryName(id: number): string {

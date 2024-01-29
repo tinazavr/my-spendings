@@ -25,4 +25,11 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect({message: 'Hello API'});
   });
+
+  it('resolves config', () => {
+    return request(app.getHttpServer())
+      .get('/test-config')
+      .expect(200)
+      .expect({message: 'Resolved value: working perfectly'});
+  });
 });

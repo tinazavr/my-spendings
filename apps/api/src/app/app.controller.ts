@@ -12,11 +12,6 @@ export class AppController {
     return this.appService.getData();
   }
 
-  @Get('test-config')
-  testConfig() {
-    return this.appService.testConfig();
-  }
-
   @Get('categories')
   getCategories() {
     return categoriesList;

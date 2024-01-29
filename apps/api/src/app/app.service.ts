@@ -10,8 +10,4 @@ export class AppService {
   getData(): { message: string } {
     return {message: 'Hello API'};
   }
-
-  testConfig(): { message: string } {
-    return {message: `Resolved value: ${this.configService.get(Config.e2eTest)}`};
-  }
 }

@@ -3,6 +3,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { SpendingsComponent } from './spendings/spendings.component';
 import { LoginComponent } from './login/login.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/spendings', pathMatch: 'full' },
@@ -10,4 +11,5 @@ export const routes: Routes = [
   { path: 'spendings', component: SpendingsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'password-reset', component: PasswordResetComponent },
+  { path: 'sign-up', component: SignUpComponent },
 ];

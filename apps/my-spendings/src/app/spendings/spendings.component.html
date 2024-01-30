@@ -39,6 +39,7 @@
       <!-- date -->
       <mat-label>{{ newDate | date : 'M/d/y ' }}</mat-label>
       <input
+        readonly
         matInput
         [matDatepicker]="picker"
         [(ngModel)]="newDate"
@@ -66,32 +67,27 @@
         #spendingTitle="ngModel"
       />
 
-      <ng-container
-        *ngIf="
-          spendingTitle.invalid &&
-          (spendingTitle.dirty || spendingTitle.touched)
-        "
-        class="alert"
-      >
-        <mat-error *ngIf="spendingTitle.errors?.['required']">
-          Title is required.
-        </mat-error>
-        <mat-error *ngIf="spendingTitle.errors?.['minlength']">
-          Title must be at least 3 characters long.
-        </mat-error>
-      </ng-container>
+      @if( spendingTitle.invalid && (spendingTitle.dirty ||
+      spendingTitle.touched)){
+      <mat-error>
+        @if(spendingTitle.errors?.['required']){ Title is required. } 
+        @else if(spendingTitle.errors?.['minlength']){ Title must be at least 3
+        characters long. }
+      </mat-error>
+
+      }
     </mat-form-field>
     <mat-form-field>
       <mat-label>Select category</mat-label>
       <mat-select [(ngModel)]="newCategoryName" name="choosenCategoryName">
         <!-- value="{{element.id}}" === [value]="element.id" -->
-        <mat-list *ngFor="let element of categoriesList">
-          <mat-option [value]="element.id"
-            ><mat-list-item role="listitem">{{
-              element.name
-            }}</mat-list-item></mat-option
-          >
-        </mat-list>
+        <!-- <mat-list > -->
+        <mat-option [value]="element.id" *ngFor="let element of categoriesList"
+          ><mat-list-item role="listitem">{{
+            element.name
+          }}</mat-list-item></mat-option
+        >
+        <!-- </mat-list> -->
       </mat-select>
     </mat-form-field>
     <br />

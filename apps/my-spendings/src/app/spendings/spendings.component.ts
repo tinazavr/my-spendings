@@ -42,7 +42,7 @@ export class SpendingsComponent implements OnInit {
   categoriesObj: { [key: number]: Category } = {};
   addSpendingClicked: boolean = false;
   newTitle: string = '';
-  newDate: string = new Date().toUTCString();
+  newDate = new Date();
   newCategoryName: string = 'some category';
   newCategoryNum: number = 6;
 
@@ -81,7 +81,6 @@ export class SpendingsComponent implements OnInit {
     return this.categoriesObj[id].name;
   }
 
-
   clickedAddSpending() {
     this.addSpendingClicked = true;
   }
@@ -93,7 +92,7 @@ export class SpendingsComponent implements OnInit {
     let iSpend: Partial<Spendings> = {
       categoryId: this.newCategoryNum,
       categoryName: this.newCategoryName,
-      date: this.newDate,
+      date: this.newDate.toUTCString(),
       title: title,
     };
 
@@ -102,10 +101,10 @@ export class SpendingsComponent implements OnInit {
         this.loadSpendings();
       },
     });
-        console.log(Object.values(this.categoriesObj));
+    console.log(Object.values(this.categoriesObj));
 
     this.addSpendingClicked = false;
     this.newTitle = '';
-    this.newDate = new Date().toUTCString();
+    this.newDate = new Date();
   }
 }

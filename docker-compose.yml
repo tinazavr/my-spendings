@@ -1,0 +1,30 @@
+# moggodb configuration
+version: '3.1'
+services:
+  mongodb-my-spendings-dev:
+    image: mongo
+    container_name: mongodb-my-spendings-dev
+    ports:
+      - "27022:27017"
+    volumes:
+      - ./data/db:/data/db
+      - ./data/configdb:/data/configdb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+
+  mongodb-my-spendings-test:
+    image: mongo
+    container_name: mongodb-my-spendings-test
+    ports:
+      - "27023:27017"
+    volumes:
+      - ./data/db-test:/data/db
+      - ./data/configdb-test:/data/configdb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+

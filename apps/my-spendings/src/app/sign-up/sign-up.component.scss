@@ -1,0 +1,22 @@
+div.sign-up-container {
+  width: 400px;
+  display: block;
+  margin: auto;
+}
+form.sign-up-form mat-form-field {
+  width: 100%;
+}
+button.sign-up-button {
+  display: block;
+  width: 50%;
+  margin: auto;
+}
+
+div.to-login-container {
+  font-size: large;
+  border: 1px solid darkgray;
+  background-color: rgba(169, 169, 169, 0.081);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px auto;
+}

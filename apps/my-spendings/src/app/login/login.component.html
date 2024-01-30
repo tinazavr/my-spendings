@@ -1,0 +1,40 @@
+<div class="login-form-container">
+  <h2>Sign in to Spendings</h2>
+
+  <form class="login-form">
+    <mat-form-field class="username-field">
+      <mat-label>Username or email address</mat-label>
+      <input matInput required />
+      <!-- <input matInput value="Sushi" required #userName="ngModel" /> -->
+    </mat-form-field>
+    <mat-form-field class="password-field">
+      <mat-label>Password</mat-label>
+      <input matInput required />
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary" class="sign-in-button">
+      Sign in
+    </button>
+  </form>
+
+  <button
+    routerLink="/password-reset"
+    mat-button
+    color="primary"
+    class="forgot-password-button router-button"
+  >
+    Forgot password?
+  </button>
+
+  <div class="create-account-box">
+    New to Spendings?
+    <button
+      routerLink="/sign-up"
+      class="router-button"
+      mat-button
+      color="primary"
+    >
+      Create an account
+    </button>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="sign-up-container">
+  <h2>Welcome to Spendings!</h2>
+  <form class="sign-up-form">
+    <mat-form-field class="email-field">
+      <mat-label>Enter your email</mat-label>
+      <input matInput required type="email" name="email" ngModel email="true" />
+    </mat-form-field>
+
+    <mat-form-field class="password-field">
+      <mat-label>Password</mat-label>
+      <input matInput required />
+    </mat-form-field>
+    <mat-form-field class="confirm-password-field">
+      <mat-label>Confirm password</mat-label>
+      <input matInput required />
+    </mat-form-field>
+
+    <br />
+    <button mat-raised-button color="primary" class="sign-up-button">
+      Sign up
+    </button>
+  </form>
+  <div class="to-login-container">
+    Already have an account?
+
+    <button
+      routerLink="/login"
+      mat-button
+      color="primary"
+      class="login-button router-button"
+    >
+      Sign in →
+    </button>
+  </div>
+</div>

@@ -1,11 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {Body, Controller, Get, Post} from '@nestjs/common';
 
-import { AppService } from './app.service';
-import { categoriesList, spendingsList } from './stub-data';
+import {AppService} from './app.service';
+import {categoriesList, spendingsList} from './stub-data';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) {
+  }
 
   @Get('categories')
   getCategories() {

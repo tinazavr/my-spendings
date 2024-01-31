@@ -3,4 +3,5 @@ export enum Config {
   env = 'NODE_ENV',
   mongodbUri = 'MONGODB_URI',
   mongodbTestUri = 'MONGODB_TEST_URI',
+  jwtSecret = 'JWT_SECRET',
 }

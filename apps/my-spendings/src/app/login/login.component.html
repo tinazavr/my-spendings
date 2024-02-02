@@ -1,7 +1,9 @@
 <div class="login-form-container">
   <h2>Sign in to Spendings</h2>
+  <div *ngIf="posted === true"><h1>you have signed in</h1></div>
 
-  <form class="login-form">
+  <div *ngIf="posted === false" class="error-sign-in"><h1>Incorrect username or password.</h1></div>
+  <form class="login-form" *ngIf="posted !== true">
     <mat-form-field class="username-field">
       <mat-label>Username or email address</mat-label>
       <input
@@ -11,6 +13,7 @@
         type="text"
         class="form-control"
         name="userLogin"
+
       />
       <!-- <input matInput value="Sushi" required #userName="ngModel" /> -->
     </mat-form-field>

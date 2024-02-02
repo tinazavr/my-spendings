@@ -2,7 +2,9 @@
   <h2>Sign in to Spendings</h2>
   <div *ngIf="posted === true"><h1>you have signed in</h1></div>
 
-  <div *ngIf="posted === false" class="error-sign-in"><h1>Incorrect username or password.</h1></div>
+  <div *ngIf="posted === false" class="error-sign-in">
+    <h1>Incorrect username or password.</h1>
+  </div>
   <form class="login-form" *ngIf="posted !== true">
     <mat-form-field class="username-field">
       <mat-label>Username or email address</mat-label>
@@ -13,18 +15,20 @@
         type="text"
         class="form-control"
         name="userLogin"
-
       />
       <!-- <input matInput value="Sushi" required #userName="ngModel" /> -->
     </mat-form-field>
     <mat-form-field class="password-field">
       <mat-label>Password</mat-label>
-      <input type="password" 
-      matInput required 
-              [(ngModel)]="password"
-              name = 'userPassword'
-
-      />
+      <input
+        [type]="hide ? 'password' : 'text'"
+        matInput
+        required
+        [(ngModel)]="password"
+        name="userPassword"
+      />      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
     </mat-form-field>
     <br />
     <button

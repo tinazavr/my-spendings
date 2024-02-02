@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -28,9 +27,10 @@ import { firstValueFrom } from 'rxjs';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  login: string = '';
-  password: string = '';
+  login: string = 'test@test.com';
+  password: string = 'strongestpasswordEver12';
   posted: boolean | null = null;
+  hide = true;
   signInButtonClicked() {
     const email = this.login.trim();
 

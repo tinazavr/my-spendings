@@ -4,15 +4,32 @@
   <form class="login-form">
     <mat-form-field class="username-field">
       <mat-label>Username or email address</mat-label>
-      <input matInput required />
+      <input
+        matInput
+        required
+        [(ngModel)]="login"
+        type="text"
+        class="form-control"
+        name="userLogin"
+      />
       <!-- <input matInput value="Sushi" required #userName="ngModel" /> -->
     </mat-form-field>
     <mat-form-field class="password-field">
       <mat-label>Password</mat-label>
-      <input matInput required />
+      <input type="password" 
+      matInput required 
+              [(ngModel)]="password"
+              name = 'userPassword'
+
+      />
     </mat-form-field>
     <br />
-    <button mat-raised-button color="primary" class="sign-in-button">
+    <button
+      mat-raised-button
+      color="primary"
+      class="sign-in-button"
+      (click)="signInButtonClicked()"
+    >
       Sign in
     </button>
   </form>

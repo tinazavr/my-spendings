@@ -1,22 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Spendings } from '../interfaces/spendings';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SpendingsService {
   httpClient: HttpClient = inject(HttpClient);
-
+  link = environment.apiLink + `/spendings`;
   getSpendings() {
-    const link = `https://u4v0osmq9i.execute-api.eu-central-1.amazonaws.com/api/spendings`;
-    return this.httpClient.get<Spendings[]>(link);
+    return this.httpClient.get<Spendings[]>(this.link);
   }
 
   addSpending(myNewSpend: Partial<Spendings>) {
-    const link = `https://u4v0osmq9i.execute-api.eu-central-1.amazonaws.com/api/spendings`;
     const body = myNewSpend;
-    return this.httpClient.post(link, body);
+    return this.httpClient.post(this.link, body);
   }
   constructor() {}
 }

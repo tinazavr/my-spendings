@@ -16,7 +16,9 @@
         "outputPath": "dist/apps/my-spendings",
         "index": "apps/my-spendings/src/index.html",
         "browser": "apps/my-spendings/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/my-spendings/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -48,7 +50,13 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/my-spendings/src/environments/environment.ts",
+              "with": "apps/my-spendings/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -74,7 +82,10 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "polyfills": ["zone.js", "zone.js/testing"],
+        "polyfills": [
+          "zone.js",
+          "zone.js/testing"
+        ],
         "tsConfig": "apps/my-spendings/tsconfig.spec.json",
         "inlineStyleLanguage": "scss",
         "assets": [
